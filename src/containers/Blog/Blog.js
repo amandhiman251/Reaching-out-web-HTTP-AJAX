@@ -6,51 +6,28 @@ import NewPost from '../../components/NewPost/NewPost';
 import './Blog.css';
 
 class Blog extends Component {
-
-    state = {
-        posts: [],
-        selectedPostId: null,
-        error: null
+    state ={
+        posts: []
     }
-
-    componentDidMount() {
+    componentDidMount(){
         axios.get('https://jsonplaceholder.typicode.com/posts')
-            .then(response => {
-                const posts = response.data.slice(0, 4);
-                const updatedPosts = posts.map(post => {
-                    return {
-                        ...post,
-                        author: 'Abe'
-                    }
-                });
-                this.setState({ posts: updatedPosts });
-            })
-            .catch(error => {
-                this.setState({ error: true });
-            });
-    }
-
-    postSelectedHandler = (id) => {
-        this.setState({ selectedPostId: id });
+        .then(response => {
+            this.setState({posts: response.data})
+            //console.log(response)
+        })
     }
 
     render () {
-        let error = <p style={{textAlign: "center"}}>Something went wrong</p>
-
-        const posts = this.state.posts.map(post =>
-            <Post key={post.id}
-            title={post.title}
-            author={post.author}
-            clicked={() => this.postSelectedHandler(post.id)}/>
-        );
-
+        const posts = this.state.posts.map(post => {
+            return <Post key={post.id} title ={post.title} />
+        })
         return (
             <div>
                 <section className="Posts">
-                    {this.state.error ? error : posts}
+                    {posts}
                 </section>
                 <section>
-                    <FullPost id={this.state.selectedPostId}/>
+                    <FullPost />
                 </section>
                 <section>
                     <NewPost />
