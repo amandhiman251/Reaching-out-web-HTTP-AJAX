@@ -12,7 +12,7 @@ class Blog extends Component {
         error:false
     }
     componentDidMount(){
-        axios.get('https://jsonplaceholder.typicode.com/postsss')//added extra sss to make error
+        axios.get('https://jsonplaceholder.typicode.com/posts')//added extra sss to make error
         .then(response => {
             const posts = response.data.slice(0, 4);
             const updatedPosts = posts.map( post => {
