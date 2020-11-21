@@ -37,7 +37,7 @@ class Posts extends Component {
         let posts = <p>Something went wrong on backend!</p>
         if(!this.state.error){
             posts = this.state.posts.map(post => {
-            return <Link key={post.id} to={'/' + post.id} >
+            return <Link key={post.id} to={'/posts/' + post.id} >
                 <Post  
                 title ={post.title} 
                 author={post.author}
