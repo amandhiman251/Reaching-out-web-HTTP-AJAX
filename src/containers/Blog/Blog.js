@@ -1,49 +1,13 @@
 import React, { Component } from 'react';
 //import axios from 'axios';
-import axios from '../../../src/axios';
-import Post from '../../components/Post/Post';
-import FullPost from '../../components/FullPost/FullPost';
-import NewPost from '../../components/NewPost/NewPost';
+import Posts from './Posts/Posts';
 import './Blog.css';
+import {Route} from 'react-router-dom';
+
 
 class Blog extends Component {
-    state ={
-        posts: [],
-        selectedPostId: null,
-        error:false
-    }
-    componentDidMount(){
-        axios.get('/posts')//added extra sss to make error
-        .then(response => {
-            const posts = response.data.slice(0, 4);
-            const updatedPosts = posts.map( post => {
-                return {
-                ...post,
-                author: "Aman"
-                }
-            });
-            this.setState({posts: updatedPosts})
-            //console.log(response)
-        }).catch(error => {
-            this.setState({error: true})
-            //console.log(error)
-        });
-    }
-    postSelectedHandler= (id) => {
-        this.setState({selectedPostId: id});
-    }
+    
     render () {
-        let posts = <p>Something went wrong on backend!</p>
-        if(!this.state.error){
-            posts = this.state.posts.map(post => {
-            return <Post 
-            key={post.id} 
-            title ={post.title} 
-            author={post.author}
-            clicked={()=> this.postSelectedHandler(post.id)}
-            />
-        });
-    }
         return (
             <div className={'Blog'}>
                 <header>
@@ -54,15 +18,8 @@ class Blog extends Component {
                         </ul>
                     </nav>
                 </header>
-                <section className="Posts">
-                    {posts}
-                </section>
-                <section>
-                    <FullPost id ={this.state.selectedPostId} />
-                </section>
-                <section>
-                    <NewPost />
-                </section>
+                <Route path="/" exact render={()=> <h1>Home</h1>} />
+                <Route path="/" exact render={()=> <h1>Home 1</h1>} />
             </div>
         );
     }
