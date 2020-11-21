@@ -10,6 +10,7 @@ class Posts extends Component {
     }
 
     componentDidMount(){
+        console.log(this.props);
         axios.get('/posts')//added extra sss to make error
         .then(response => {
             const posts = response.data.slice(0, 4);
