@@ -14,7 +14,9 @@ class Blog extends Component {
                 <header>
                     <nav>
                         <ul>
-                            <li><NavLink exact to ='/'>Home</NavLink></li>
+                            <li><NavLink 
+                            activeClassName="my-active"
+                            exact to ='/'>Home</NavLink></li>
                             <li><NavLink to = {{
                                 pathname: '/new-post',
                                 hash: '#submit',
