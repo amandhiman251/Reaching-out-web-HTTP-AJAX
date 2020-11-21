@@ -14,9 +14,10 @@
     color: black;
 }
 .Blog a:hover,
-.Blog a:active{
+.Blog a:active,
+.Blog a.active{
     color: #fa923f;
 }
-.Blog a.my-active{
+/* .Blog a.my-active{
     color: blue;
-}
+} */
