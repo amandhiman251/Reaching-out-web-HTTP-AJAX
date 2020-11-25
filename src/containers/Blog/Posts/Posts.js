@@ -41,6 +41,7 @@ class Posts extends Component {
             posts = this.state.posts.map(post => {
             return (//<Link key={post.id} to={'/posts/' + post.id} >
                 <Post  
+                key={post.id}
                 title ={post.title} 
                 author={post.author}
                 clicked={()=> this.postSelectedHandler(post.id)}
