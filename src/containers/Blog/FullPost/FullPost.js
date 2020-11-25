@@ -22,7 +22,10 @@ class FullPost extends Component {
         });
     }
     loadData =()=> {
-        if(!this.state.loadedPost || (this.state.loadedPost.id != this.props.match.params.id )){
+        if(!this.state.loadedPost || (this.state.loadedPost.id != this.props.match.params.id ))
+        // if(!this.state.loadedPost || (this.state.loadedPost.id !== +this.props.match.params.id ))
+        // to check we have to covert PermissionStatus.id into number or not check type simply use != instead !==
+        {
             axios.get("/posts/" + this.props.match.params.id)
             .then(response => {
             this.setState({loadedPost: response.data})
